@@ -1,16 +1,19 @@
 package com.anagrafica.main;
 
-import java.awt.PageAttributes;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.anagrafica.persona.Dipendente;
+import com.anagrafica.persona.DipendenteAzienda1;
+import com.anagrafica.persona.DipendenteAzienda2;
 import com.anagrafica.persona.Persona;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Persona[] pList = new Persona[2];
+		Dipendente dip;
 		String welcomeMessage = "", input = "";
 		int counter = 0;
 		
@@ -42,7 +45,7 @@ public class Main {
 				case "d":
 					if(counter != 0){
 						for(int i=0; i<counter; i++){
-							Persona.printPersona(pList[i].getNome(), pList[i].getCognome(), pList[i].getCf());
+							pList[i].printPersona();
 						}
 					}else{
 						System.out.println("---");
@@ -66,7 +69,7 @@ public class Main {
 	}
 	
 	public static Persona inserisciPers(Scanner scan){
-		Persona p;
+		Persona pers;
 		
 		System.out.println("Inserisci il nome: ");
 		String nome = scan.nextLine();
@@ -77,6 +80,12 @@ public class Main {
 		System.out.println("Inserisci il codice fiscale: ");
 		String cf = scan.nextLine();
 		
+		System.out.println("Inserisci il nome dell'azienda: ");
+		String nomeAzienda = scan.nextLine();
+		
+		System.out.println("Inserisci il codice azienda [1 o 2]: ");
+		String codAzienda = scan.nextLine();
+		
 		while(!(controllaCF(cf))){
 			System.err.println("Il codice fiscale NON ha il formato corretto");
 			
@@ -84,9 +93,17 @@ public class Main {
 			cf = scan.nextLine();
 		}
 		
-		p = new Persona(nome, cognome, cf);
+		while(!("1".equals(codAzienda) || "2".equals(codAzienda))){
+			System.out.println("Inserisci il codice azienda [1 o 2]: ");
+			codAzienda = scan.nextLine();
+		}
 		
-		return p;
+		if("1".equals(codAzienda))
+			pers = new DipendenteAzienda1(nome, cognome, cf, nomeAzienda);
+		else
+			pers = new DipendenteAzienda2(nome, cognome, cf, nomeAzienda);
+		
+		return pers;
 	}
 	
 	public static boolean controllaCF(String cf){

@@ -1,7 +1,7 @@
 package com.anagrafica.persona;
 
 public class Persona {
-	private String nome,cognome,cf;
+	protected String nome,cognome,cf;
 	
 	public Persona(){
 		nome = cognome = cf = "";
@@ -37,12 +37,11 @@ public class Persona {
 		this.cf = cf;
 	}
 	
-	public static void printPersona(String nome, String cognome, String cf){
+	public void printPersona(){
 		System.out.println("-----------------------");
-		System.out.println("Nome: " + nome);
-		System.out.println("Cognome: " + cognome);
-		System.out.println("Codice Fiscale: " + cf);
-		System.out.println("-----------------------");
+		System.out.println("Nome:           " + this.nome);
+		System.out.println("Cognome:        " + this.cognome);
+		System.out.println("Codice Fiscale: " + this.cf);
 	}
 	
 	public String toString(){
