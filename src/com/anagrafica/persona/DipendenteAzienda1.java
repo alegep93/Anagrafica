@@ -8,9 +8,20 @@ public class DipendenteAzienda1 extends Dipendente{
 	
 	@Override
 	protected String calcolaMatricola(){
-		String nome = this.nome.substring(0, 2);
-		String cognome = this.cognome.substring(0, 2);
-		int randNum = (int)(Math.random() * 100);
+		String nome, cognome;
+		double randNum;
+		
+		if(this.nome.length()>2)
+			nome = this.nome.substring(0, 2);
+		else
+			nome = this.nome;
+		
+		if(this.cognome.length()>2)
+			cognome = this.cognome.substring(0, 2);
+		else
+			cognome = this.cognome;
+		
+		randNum = (int)(Math.random() * 100);
 		return "\"" + nome + cognome + String.valueOf(randNum) + "\"";
 	}
 }

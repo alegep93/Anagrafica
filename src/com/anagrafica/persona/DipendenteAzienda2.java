@@ -8,8 +8,18 @@ public class DipendenteAzienda2 extends Dipendente{
 	
 	@Override
 	protected String calcolaMatricola(){
-		String nome = this.nome.substring(0, 3);
-		String cognome = this.cognome.substring(0, 3);
+		String nome, cognome;
+		
+		if(this.nome.length()>3)
+			nome = this.nome.substring(0, 3);
+		else
+			nome = this.nome;
+		
+		if(this.cognome.length()>3)
+			cognome = this.cognome.substring(0, 3);
+		else
+			cognome = this.cognome;
+		
 		return "\"" + nome + cognome + "\"";
 	}
 }
