@@ -39,9 +39,9 @@ public class Persona {
 	
 	public void printPersona(){
 		System.out.println("-----------------------");
-		System.out.println("Nome:           " + this.nome);
-		System.out.println("Cognome:        " + this.cognome);
-		System.out.println("Codice Fiscale: " + this.cf);
+		System.out.format("%-16s %s \r\n", "Nome:", this.nome);
+		System.out.format("%-16s %s \r\n", "Cognome:", this.cognome);
+		System.out.format("%-16s %s \r\n", "Cofice fiscale:", this.cf);
 	}
 	
 	public String toString(){

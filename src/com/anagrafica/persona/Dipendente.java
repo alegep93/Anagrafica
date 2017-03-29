@@ -1,7 +1,7 @@
 package com.anagrafica.persona;
 
 public abstract class Dipendente extends Persona {
-	String matricola, nomeAzienda;
+	protected String matricola, nomeAzienda;
 	
 	public Dipendente(String nome, String cognome, String cf, String nomeAzienda){
 		super(nome, cognome, cf);
@@ -22,8 +22,8 @@ public abstract class Dipendente extends Persona {
 	@Override
 	public void printPersona(){
 		super.printPersona();
-		System.out.println("Matricola:      " + this.matricola);
-		System.out.println("Nome Azienda:   " + this.nomeAzienda);
+		System.out.format("%-16s %s \r\n", "Matricola:", this.matricola);
+		System.out.format("%-16s %s \r\n", "Nome azienda:", this.nomeAzienda);
 		System.out.println("-----------------------");
 	}
 }
